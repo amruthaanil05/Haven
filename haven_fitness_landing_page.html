@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haven Fitness - Bold Space to Grow, Not to Prove</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#F8FAFC', // Ultra-clean, premium cool slate-50 background
+                            dark: '#0F172A', // Deep midnight navy for high-contrast/dark sections
+                            primary: '#6366F1', // Bold, confident Royal Indigo/Purple
+                            primaryDark: '#4F46E5',
+                            secondary: '#F43F5E', // Energetic, vibrant Coral-Rose
+                            secondaryDark: '#E11D48',
+                            slate: '#334155', // Strong slate for body copy
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 50%, #E0E7FF 100%);
+        }
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(244, 63, 94, 0.15) 0%, transparent 50%);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #6366F1, #F43F5E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-slate font-sans selection:bg-brand-secondary selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="p-2.5 bg-gradient-to-br from-brand-primary to-brand-secondary text-white rounded-xl shadow-lg shadow-brand-primary/20 group-hover:scale-105 transition-transform duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight text-brand-dark block leading-none">Haven</span>
+                        <span class="text-xs font-black tracking-widest text-brand-secondary uppercase">Fitness</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-sm font-bold text-brand-slate hover:text-brand-primary transition-colors duration-200">About Our Philosophy</a>
+                    <a href="#schedule" class="text-sm font-bold text-brand-slate hover:text-brand-primary transition-colors duration-200">Hours & Custom Schedules</a>
+                    <a href="#trainers" class="text-sm font-bold text-brand-slate hover:text-brand-primary transition-colors duration-200">Our Guides</a>
+                    <a href="#reviews" class="text-sm font-bold text-brand-slate hover:text-brand-primary transition-colors duration-200">Member Stories</a>
+                    <a href="#join" class="text-sm font-bold text-brand-slate hover:text-brand-primary transition-colors duration-200">Join Community</a>
+                </nav>
+
+                <!-- Desktop CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#join" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-extrabold rounded-xl text-white bg-brand-primary hover:bg-brand-primaryDark transition-all duration-300 shadow-lg shadow-brand-primary/25 hover:scale-105">
+                        Get a Free Pass
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button with fixed wrapper tags preventing Lucide detached node bug -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-xl text-brand-slate hover:text-brand-primary hover:bg-slate-100 focus:outline-none transition-all duration-200" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <span id="menu-icon-wrapper" class="block">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </span>
+                        <span id="close-icon-wrapper" class="block hidden">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 transition-all duration-300 ease-in-out">
+            <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 shadow-inner">
+                <a href="#about" class="block px-4 py-3 rounded-xl text-base font-bold text-brand-slate hover:bg-slate-50 hover:text-brand-primary transition-all duration-200">About Our Philosophy</a>
+                <a href="#schedule" class="block px-4 py-3 rounded-xl text-base font-bold text-brand-slate hover:bg-slate-50 hover:text-brand-primary transition-all duration-200">Hours & Custom Schedules</a>
+                <a href="#trainers" class="block px-4 py-3 rounded-xl text-base font-bold text-brand-slate hover:bg-slate-50 hover:text-brand-primary transition-all duration-200">Our Guides</a>
+                <a href="#reviews" class="block px-4 py-3 rounded-xl text-base font-bold text-brand-slate hover:bg-slate-50 hover:text-brand-primary transition-all duration-200">Member Stories</a>
+                <a href="#join" class="block px-4 py-3 rounded-xl text-base font-bold text-brand-slate hover:bg-slate-50 hover:text-brand-primary transition-all duration-200">Join Community</a>
+                <div class="pt-4 pb-2 border-t border-slate-100">
+                    <a href="#join" class="block w-full text-center px-4 py-3 rounded-xl text-base font-extrabold text-white bg-brand-primary hover:bg-brand-primaryDark transition-all duration-200">
+                        Get a Free Pass
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-16 pb-24 md:pt-28 md:pb-36 bg-brand-dark text-white hero-pattern">
+        <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-brand-primary/10 to-transparent rounded-l-full pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-primary/20 border border-brand-primary/30 text-brand-primary">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-brand-secondary"></i>
+                        <span class="text-xs font-black uppercase tracking-widest">A bold new way to train</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        A space to grow, <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-indigo-400 to-brand-secondary">not to prove.</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        Welcome to a gym that feels like home. Take the first step without pressure, without judgment, and surrounded by a powerful, gentle community that cheers you on at every milestone.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#join" class="inline-flex items-center justify-center px-8 py-4.5 text-base font-extrabold rounded-2xl text-white bg-brand-secondary hover:bg-brand-secondaryDark shadow-xl shadow-brand-secondary/35 hover:shadow-brand-secondary/50 transition-all duration-300 transform hover:-translate-y-1">
+                            Claim Your 1-Week Free Pass
+                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                        <a href="#about" class="inline-flex items-center justify-center px-8 py-4.5 text-base font-bold rounded-2xl text-white bg-slate-800 hover:bg-slate-700 border border-slate-700/60 shadow-sm transition-all duration-300">
+                            Learn Our Philosophy
+                        </a>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 border-t border-slate-800">
+                        <div>
+                            <span class="block text-3xl font-black text-white">0%</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Intimidation</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-black text-brand-secondary">100%</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Supportive</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-black text-brand-primary">Friendly</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Certified Guides</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Container -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute -inset-4 rounded-3xl bg-brand-primary/30 rotate-3 scale-95 blur-sm"></div>
+                    <div class="absolute -inset-4 rounded-3xl bg-brand-secondary/30 -rotate-3 scale-95 blur-sm"></div>
+                    
+                    <div class="relative bg-slate-900 p-4 rounded-3xl shadow-2xl border border-slate-800">
+                        <img 
+                            src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop" 
+                            alt="Smiling community working out at Haven Fitness" 
+                            class="rounded-2xl object-cover w-full h-[350px] sm:h-[450px]"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x450/312E81/FFFFFF?text=Haven+Fitness+Community';"
+                        />
+                        <div class="absolute -bottom-6 -left-6 bg-slate-900 p-5 rounded-2xl shadow-2xl border border-slate-800 flex items-center space-x-4 max-w-xs">
+                            <div class="p-3 bg-gradient-to-br from-brand-primary to-brand-secondary text-white rounded-xl">
+                                <i data-lucide="heart" class="w-6 h-6 fill-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-extrabold text-white">Mental Well-being</p>
+                                <p class="text-xs text-slate-400 font-medium">We train for clarity and self-care.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- "About Us" Philosophy Section -->
+    <section id="about" class="py-20 md:py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs font-black uppercase tracking-widest text-brand-secondary">Our Philosophy</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-brand-dark">
+                    A sanctuary created to nurture your body, calm your mind, and fuel your soul.
+                </p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Narrative Text -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="text-2xl font-extrabold text-brand-dark">Your health is more than a scale number.</h3>
+                    <p class="text-brand-slate leading-relaxed font-medium">
+                        At Haven Fitness, we founded our space on a simple belief: movement is one of our greatest acts of self-care. We moved away from cold, mirror-walled rooms and aggressive slogans to build a serene sanctuary where you can explore what your body is truly capable of.
+                    </p>
+                    <p class="text-brand-slate leading-relaxed font-medium">
+                        Whether you are building physical resilience, recovering your strength, or clearing stress after a long day, our compassionate mentors adapt everything to fit your pace.
+                    </p>
+                    
+                    <blockquote class="border-l-4 border-brand-secondary pl-4 py-2 italic text-brand-slate font-bold bg-slate-50 rounded-r-xl">
+                        "I never thought a gym could feel like a deep breath. Walking into Haven changed my relationship with movement entirely."
+                        <span class="block text-xs font-black text-brand-primary mt-2 not-italic uppercase tracking-wider">— Sarah K., Member since 2025</span>
+                    </blockquote>
+                </div>
+
+                <!-- Three Value Pillars -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Pillar 1 -->
+                    <div class="flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center shadow-sm">
+                                <i data-lucide="smile" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-brand-dark">Come as You Are</h4>
+                            <p class="text-sm text-brand-slate/90 font-medium mt-1">
+                                No fancy gear, fitness background, or shape requirements. We respect every body, every starting point, and every journey. Just bring yourself.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-secondary/30 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-brand-secondary/10 text-brand-secondary flex items-center justify-center shadow-sm">
+                                <i data-lucide="leaf" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-brand-dark">Holistic Mental Health</h4>
+                            <p class="text-sm text-brand-slate/90 font-medium mt-1">
+                                Fitness should empower the brain just as much as the lungs. We incorporate restorative cooling periods, breathing intervals, and meditative cool downs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center shadow-sm">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-brand-dark">Community First</h4>
+                            <p class="text-sm text-brand-slate/90 font-medium mt-1">
+                                You are never an anonymous barcode number here. Our community interacts, shares laughs, hosts low-key weekend hikes, and cheers for each other's triumphs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Schedules & Hours Section -->
+    <section id="schedule" class="py-20 md:py-32 gradient-bg relative border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <h2 class="text-xs font-black uppercase tracking-widest text-brand-primary">Time Schedules</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-brand-dark">
+                    Find Your Rhythm
+                </p>
+                <p class="text-brand-slate font-medium text-sm sm:text-base max-w-lg mx-auto">
+                    We offer flexible, stress-free time frames structured to fit perfectly into your daily lifestyle. Check out our standard hours, classes, or design your own!
+                </p>
+            </div>
+
+            <!-- Schedule Container Card -->
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+                <!-- Tab Headers -->
+                <div class="flex flex-col sm:flex-row border-b border-slate-100 bg-slate-50 p-3 gap-2">
+                    <button id="tab-hours-btn" class="flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 bg-brand-primary text-white shadow-lg shadow-brand-primary/25">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>General Gym Hours</span>
+                    </button>
+                    <button id="tab-classes-btn" class="flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 text-brand-slate hover:bg-slate-200/50">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Class Schedule</span>
+                    </button>
+                    <button id="tab-custom-btn" class="flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 text-brand-slate hover:bg-slate-200/50">
+                        <i data-lucide="sliders" class="w-4 h-4 text-brand-secondary"></i>
+                        <span class="text-brand-dark">Customize My Timing</span>
+                    </button>
+                </div>
+
+                <!-- Tab Panels Container -->
+                <div class="p-6 sm:p-10">
+                    <!-- Panel 1: General Gym Hours (Active by default) -->
+                    <div id="panel-hours" class="space-y-8 transition-all duration-300">
+                        <p class="text-center text-sm font-bold text-brand-slate">
+                            Our doors are open for independent training, stretching, or accessing our coaching advice during these hours:
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                            <!-- Weekdays Card -->
+                            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-center space-x-5 shadow-sm">
+                                <div class="p-4 bg-brand-primary/10 text-brand-primary rounded-2xl">
+                                    <i data-lucide="sun" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-wider font-black text-slate-400">Mondays to Fridays</span>
+                                    <span class="block text-2xl font-black text-brand-dark mt-0.5">5:00 AM – 10:00 PM</span>
+                                    <span class="block text-xs text-brand-secondary font-bold mt-1 uppercase tracking-wide">Full Trainer Availability</span>
+                                </div>
+                            </div>
+
+                            <!-- Weekends Card -->
+                            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-center space-x-5 shadow-sm">
+                                <div class="p-4 bg-brand-secondary/10 text-brand-secondary rounded-2xl">
+                                    <i data-lucide="sunset" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-wider font-black text-slate-400">Saturdays & Sundays</span>
+                                    <span class="block text-2xl font-black text-brand-dark mt-0.5">7:00 AM – 8:00 PM</span>
+                                    <span class="block text-xs text-brand-primary font-bold mt-1 uppercase tracking-wide">Group Hikes & Restoration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center pt-4">
+                            <span class="inline-flex items-center space-x-2.5 text-xs font-extrabold text-brand-slate px-5 py-2 rounded-full bg-slate-100 border border-slate-200 shadow-sm">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+                                <span>Currently Open & Welcoming New Walk-ins</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Class Schedule (Hidden by default) -->
+                    <div id="panel-classes" class="space-y-6 hidden transition-all duration-300">
+                        <p class="text-center text-sm font-bold text-brand-slate">
+                            Our small-group, non-competitive sessions are perfect for structured, supportive guidance.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Class 1 -->
+                            <div class="p-5 rounded-2xl border border-slate-100 hover:border-brand-secondary/40 hover:bg-slate-50 transition-all duration-200 flex items-start justify-between bg-white shadow-sm">
+                                <div class="space-y-2">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-brand-secondary/10 text-brand-secondary uppercase tracking-wider">
+                                        Mind-Body Focus
+                                    </div>
+                                    <h4 class="text-lg font-black text-brand-dark">Morning Flow Yoga</h4>
+                                    <p class="text-xs text-brand-slate font-medium leading-relaxed">A gentle awakening sequence to build flexibility and steady your breathing.</p>
+                                </div>
+                                <div class="text-right flex-shrink-0 pl-4">
+                                    <span class="block text-sm font-black text-brand-dark">Daily</span>
+                                    <span class="block text-xs text-brand-primary font-bold mt-0.5">7:00 AM</span>
+                                </div>
+                            </div>
+
+                            <!-- Class 2 -->
+                            <div class="p-5 rounded-2xl border border-slate-100 hover:border-brand-primary/40 hover:bg-slate-50 transition-all duration-200 flex items-start justify-between bg-white shadow-sm">
+                                <div class="space-y-2">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-brand-primary/10 text-brand-primary uppercase tracking-wider">
+                                        Strength Focus
+                                    </div>
+                                    <h4 class="text-lg font-black text-brand-dark">Foundational Strength</h4>
+                                    <p class="text-xs text-brand-slate font-medium leading-relaxed">Learn the fundamental lifting patterns safely to preserve and enrich dynamic mobility.</p>
+                                </div>
+                                <div class="text-right flex-shrink-0 pl-4">
+                                    <span class="block text-sm font-black text-brand-dark">Mon/Wed/Fri</span>
+                                    <span class="block text-xs text-brand-primary font-bold mt-0.5">9:00 AM</span>
+                                    <span class="block text-xs text-brand-primary font-bold">5:30 PM</span>
+                                </div>
+                            </div>
+
+                            <!-- Class 3 -->
+                            <div class="p-5 rounded-2xl border border-slate-100 hover:border-brand-primary/40 hover:bg-slate-50 transition-all duration-200 flex items-start justify-between bg-white shadow-sm">
+                                <div class="space-y-2">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-brand-primary/10 text-brand-primary uppercase tracking-wider">
+                                        Cardio Focus
+                                    </div>
+                                    <h4 class="text-lg font-black text-brand-dark">Heart & Sole Cardio</h4>
+                                    <p class="text-xs text-brand-slate font-medium leading-relaxed">An energetic, heart-enriching session tuned for energy elevation, not fatigue exhaustion.</p>
+                                </div>
+                                <div class="text-right flex-shrink-0 pl-4">
+                                    <span class="block text-sm font-black text-brand-dark">Tue/Thu</span>
+                                    <span class="block text-xs text-brand-primary font-bold mt-0.5">6:00 PM</span>
+                                </div>
+                            </div>
+
+                            <!-- Class 4 -->
+                            <div class="p-5 rounded-2xl border border-slate-100 hover:border-brand-secondary/40 hover:bg-slate-50 transition-all duration-200 flex items-start justify-between bg-white shadow-sm">
+                                <div class="space-y-2">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-brand-secondary/10 text-brand-secondary uppercase tracking-wider">
+                                        Recovery Focus
+                                    </div>
+                                    <h4 class="text-lg font-black text-brand-dark">Restorative Mobility</h4>
+                                    <p class="text-xs text-brand-slate font-medium leading-relaxed">Relieve tight joints and stretch muscle groups to prepare your body for a relaxing weekend.</p>
+                                </div>
+                                <div class="text-right flex-shrink-0 pl-4">
+                                    <span class="block text-sm font-black text-brand-dark">Saturday</span>
+                                    <span class="block text-xs text-brand-primary font-bold mt-0.5">10:00 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Custom Timing Option (With Perfectly Synced Options) -->
+                    <div id="panel-custom" class="space-y-6 hidden transition-all duration-300">
+                        <p class="text-center text-sm font-bold text-brand-slate">
+                            Can't find a time that works for you? Design a custom slot! Choose your ideal focus and timing to check our trainer match capabilities.
+                        </p>
+                        
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 max-w-xl mx-auto space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-black text-brand-dark uppercase tracking-wide mb-1">Preferred Day</label>
+                                    <select id="custom-day" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-sm font-bold focus:ring-2 focus:ring-brand-primary">
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-black text-brand-dark uppercase tracking-wide mb-1">Preferred Time</label>
+                                    <select id="custom-time" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-sm font-bold focus:ring-2 focus:ring-brand-primary">
+                                        <option value="6:00 AM">6:00 AM (Early Flow)</option>
+                                        <option value="11:30 AM">11:30 AM (Midday Breath)</option>
+                                        <option value="3:00 PM">3:00 PM (Afternoon Recovery)</option>
+                                        <option value="7:30 PM">7:30 PM (Evening Restorative)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-black text-brand-dark uppercase tracking-wide mb-1">Your Primary Goal</label>
+                                <select id="custom-goal" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-sm font-bold focus:ring-2 focus:ring-brand-primary">
+                                    <option value="Finding a comfortable routine">Finding a warm and easy routine</option>
+                                    <option value="Building functional confidence">Building confidence in my movements</option>
+                                    <option value="Meeting comforting friends">Meeting warm and support-minded friends</option>
+                                    <option value="Moving comfortably without pain">Moving and stretching without discomfort</option>
+                                </select>
+                            </div>
+
+                            <button id="check-custom-btn" class="w-full py-3.5 bg-brand-primary hover:bg-brand-primaryDark text-white font-extrabold text-sm rounded-xl transition-all duration-300 shadow-lg shadow-brand-primary/10">
+                                Check Trainer & Slot Availability
+                            </button>
+
+                            <!-- Success Result Panel (Hidden initially) -->
+                            <div id="custom-result" class="hidden p-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-900 text-sm space-y-3 transition-all duration-300">
+                                <div class="flex items-center space-x-2 font-black">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i>
+                                    <span>🎉 Custom Slot Available!</span>
+                                </div>
+                                <p class="text-xs font-medium" id="custom-result-text"></p>
+                                <button id="lock-custom-btn" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-lg uppercase tracking-wider transition-all duration-200">
+                                    Lock in this Custom Slot & Sign Up
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Meet Your Guides Section -->
+    <section id="trainers" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs font-black uppercase tracking-widest text-brand-primary">Our Guides</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-brand-dark">
+                    Meet Your Empathetic Mentors
+                </p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full mt-4"></div>
+                <p class="text-brand-slate font-medium max-w-lg mx-auto text-sm sm:text-base">
+                    Our fitness educators carry deep expertise and warm hearts. They exist to support your safe physical growth, never to judge your baseline.
+                </p>
+            </div>
+
+            <!-- Trainer Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                <!-- Trainer 1 -->
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="relative overflow-hidden rounded-2xl aspect-square bg-slate-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop" 
+                                alt="Coach Emma Vance" 
+                                class="object-cover w-full h-full"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x400/4F46E5/FFFFFF?text=Coach+Emma';"
+                            />
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-black text-brand-primary uppercase tracking-wider">Mind-Body Longevity</span>
+                            <h3 class="text-xl font-black text-brand-dark">Emma Vance</h3>
+                            <p class="text-xs text-brand-slate font-bold">
+                                BS in Kinesiology • 200-Hr Registered Yoga Teacher
+                            </p>
+                        </div>
+                        <p class="text-sm italic text-brand-slate border-l-2 border-brand-primary/40 pl-3 leading-relaxed font-medium">
+                            "My goal is to help you fall in love with moving your body in a way that respects your physical history and builds energy for your life outside the gym."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trainer 2 -->
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="relative overflow-hidden rounded-2xl aspect-square bg-slate-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" 
+                                alt="Coach Marcus Sterling" 
+                                class="object-cover w-full h-full"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x400/4F46E5/FFFFFF?text=Coach+Marcus';"
+                            />
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-black text-brand-secondary uppercase tracking-wider">Beginner Strength & Mobility</span>
+                            <h3 class="text-xl font-black text-brand-dark">Marcus Sterling</h3>
+                            <p class="text-xs text-brand-slate font-bold">
+                                NASM Certified Personal Trainer • Corrective Exercise Specialist
+                            </p>
+                        </div>
+                        <p class="text-sm italic text-brand-slate border-l-2 border-brand-secondary/40 pl-3 leading-relaxed font-medium">
+                            "Lifting weights isn't about setting competitive world records. It's about being strong enough to carry groceries, pick up kids, and enjoy pain-free posture."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="relative overflow-hidden rounded-2xl aspect-square bg-slate-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" 
+                                alt="Coach Sarah Chen" 
+                                class="object-cover w-full h-full"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x400/4F46E5/FFFFFF?text=Coach+Sarah';"
+                            />
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-black text-brand-primary uppercase tracking-wider">Restorative Cardiology</span>
+                            <h3 class="text-xl font-black text-brand-dark">Sarah Chen</h3>
+                            <p class="text-xs text-brand-slate font-bold">
+                                ACE Certified Medical Exercise Specialist • Pilates Lead
+                            </p>
+                        </div>
+                        <p class="text-sm italic text-brand-slate border-l-2 border-brand-primary/40 pl-3 leading-relaxed font-medium">
+                            "Let's tune out the metrics of high-pressure tracking and focus on how our hearts beat. Cardiorespiratory health should give you joy, not stress."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reviews with Pictures Section -->
+    <section id="reviews" class="py-20 md:py-32 bg-slate-50 border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs font-black uppercase tracking-widest text-brand-secondary">Real Member Stories</h2>
+                <p class="text-3xl sm:text-4xl font-black tracking-tight text-brand-dark">
+                    What Our Family Says About Haven
+                </p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full mt-4"></div>
+                <p class="text-brand-slate font-medium max-w-lg mx-auto text-sm sm:text-base">
+                    Read the experiences of standard everyday people, busy parents, and health pioneers who made Haven their safe space.
+                </p>
+            </div>
+
+            <!-- Reviews Layout Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
+                    <span class="absolute top-6 right-8 text-6xl text-slate-100 font-serif leading-none select-none">“</span>
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-sm text-brand-slate leading-relaxed font-semibold">
+                            "I have avoided commercial gym models for over a decade due to heavy gym intimidation. Haven was a breath of fresh air. Coach Emma adjusted every morning stretch to my pace!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-6 border-t border-slate-100 mt-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-slate-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&h=150&auto=format&fit=crop" 
+                                alt="Chloe Daniels" 
+                                class="object-cover w-full h-full"
+                                onerror="this.onerror=null;this.src='https://placehold.co/150x150/4F46E5/FFFFFF?text=CD';"
+                            />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-black text-brand-dark">Chloe Daniels</h4>
+                            <span class="text-xs text-brand-secondary font-extrabold uppercase tracking-wide">First-time Gym Goer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
+                    <span class="absolute top-6 right-8 text-6xl text-slate-100 font-serif leading-none select-none">“</span>
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-sm text-brand-slate leading-relaxed font-semibold">
+                            "Being a busy father, my timings change week-by-week. The ability to request customization in timings and schedule directly with Marcus made consistency actually realistic."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-6 border-t border-slate-100 mt-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-slate-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop" 
+                                alt="James Vance" 
+                                class="object-cover w-full h-full"
+                                onerror="this.onerror=null;this.src='https://placehold.co/150x150/4F46E5/FFFFFF?text=JV';"
+                            />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-black text-brand-dark">James Vance</h4>
+                            <span class="text-xs text-brand-primary font-extrabold uppercase tracking-wide">Father of Two</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
+                    <span class="absolute top-6 right-8 text-6xl text-slate-100 font-serif leading-none select-none">“</span>
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-sm text-brand-slate leading-relaxed font-semibold">
+                            "The post-workout cool down and community tea hour is my favorite thing. You are welcomed as you are, from day one. I cannot recommend this environment enough."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-6 border-t border-slate-100 mt-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-slate-200">
+                            <img 
+                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&h=150&auto=format&fit=crop" 
+                                alt="Maria Ruiz" 
+                                class="object-cover w-full h-full"
+                                onerror="this.onerror=null;this.src='https://placehold.co/150x150/4F46E5/FFFFFF?text=MR';"
+                            />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-black text-brand-dark">Maria Ruiz</h4>
+                            <span class="text-xs text-brand-secondary font-extrabold uppercase tracking-wide">Community Pioneer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Registration & Call-to-Action Form Section -->
+    <section id="join" class="py-20 md:py-32 gradient-bg relative border-t border-slate-200">
+        <div class="absolute inset-0 bg-[radial-gradient(#6366F1_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto">
+                
+                <!-- Card Container -->
+                <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden p-8 sm:p-12 relative">
+                    
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -z-10"></div>
+                    
+                    <!-- Form Container (Visible state) -->
+                    <div id="form-container" class="space-y-8">
+                        <div class="text-center space-y-3">
+                            <div class="inline-flex p-3 bg-brand-primary/10 text-brand-primary rounded-2xl mb-2">
+                                <i data-lucide="sparkle" class="w-8 h-8 text-brand-secondary"></i>
+                            </div>
+                            <h2 class="text-3xl font-black text-brand-dark">Your Journey Starts Here</h2>
+                            <p class="text-brand-slate max-w-lg mx-auto text-sm sm:text-base leading-relaxed font-medium">
+                                Join the Haven Family with a completely risk-free <strong class="text-brand-primary">1-Week Trial Pass</strong>. No payment cards required, just your exciting motivation.
+                            </p>
+                        </div>
+
+                        <!-- Custom Slot Selection Notice (Hidden by default unless custom builder used) -->
+                        <div id="locked-timing-badge" class="hidden p-4 bg-indigo-50 border border-indigo-200 rounded-2xl flex items-center justify-between text-xs text-indigo-900 font-semibold">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="check-square" class="w-4 h-4 text-brand-primary"></i>
+                                <span>Custom Schedule Locked: <span id="locked-timing-string" class="font-black">Wednesday at 3:00 PM</span></span>
+                            </div>
+                            <button id="clear-custom-timing" class="text-brand-secondary underline hover:text-brand-secondaryDark font-black">Change Slot</button>
+                        </div>
+
+                        <!-- Interactive Form -->
+                        <form id="registration-form" class="space-y-6">
+                            <!-- Input: Name -->
+                            <div>
+                                <label for="name" class="block text-sm font-extrabold text-brand-dark mb-1.5">Full Name</label>
+                                <div class="relative rounded-2xl shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                                        <i data-lucide="user" class="w-5 h-5"></i>
+                                    </div>
+                                    <input 
+                                        type="text" 
+                                        name="name" 
+                                        id="name" 
+                                        required
+                                        placeholder="Emma Watson" 
+                                        class="block w-full pl-11 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm text-brand-dark placeholder:text-slate-400 font-medium transition-all duration-200"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Inputs: Email & Phone -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="email" class="block text-sm font-extrabold text-brand-dark mb-1.5">Email Address</label>
+                                    <div class="relative rounded-2xl shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                                            <i data-lucide="mail" class="w-5 h-5"></i>
+                                        </div>
+                                        <input 
+                                            type="email" 
+                                            name="email" 
+                                            id="email" 
+                                            required
+                                            placeholder="emma@example.com" 
+                                            class="block w-full pl-11 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm text-brand-dark placeholder:text-slate-400 font-medium transition-all duration-200"
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-extrabold text-brand-dark mb-1.5">Phone Number</label>
+                                    <div class="relative rounded-2xl shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                                            <i data-lucide="phone" class="w-5 h-5"></i>
+                                        </div>
+                                        <input 
+                                            type="tel" 
+                                            name="phone" 
+                                            id="phone" 
+                                            required
+                                            placeholder="(555) 019-2834" 
+                                            class="block w-full pl-11 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm text-brand-dark placeholder:text-slate-400 font-medium transition-all duration-200"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dropdown: Goal Focus -->
+                            <div>
+                                <label for="focus" class="block text-sm font-extrabold text-brand-dark mb-1.5">What are you most excited to focus on?</label>
+                                <div class="relative rounded-2xl shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                                        <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                                    </div>
+                                    <select 
+                                        name="focus" 
+                                        id="focus" 
+                                        required
+                                        class="block w-full pl-11 pr-10 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-sm text-brand-dark placeholder:text-slate-400 font-medium transition-all duration-200 appearance-none cursor-pointer"
+                                    >
+                                        <option value="" disabled selected>Select an option...</option>
+                                        <option value="Finding a comfortable routine">Finding a warm and easy routine</option>
+                                        <option value="Building functional confidence">Building confidence in my movements</option>
+                                        <option value="Meeting comforting friends">Meeting warm and support-minded friends</option>
+                                        <option value="Moving comfortably without pain">Moving and stretching without discomfort</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+                                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Opt-in Checkbox -->
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input 
+                                        id="agree" 
+                                        name="agree" 
+                                        type="checkbox" 
+                                        required
+                                        class="focus:ring-brand-primary h-4 w-4 text-brand-primary border-slate-300 rounded bg-slate-50"
+                                    >
+                                </div>
+                                <div class="ml-3 text-xs">
+                                    <label for="agree" class="font-bold text-brand-slate">
+                                        I am ready to accept supportive smiles and gentle guides on my journey. I agree to receive motivational trial reminders.
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button 
+                                type="submit" 
+                                class="w-full inline-flex items-center justify-center px-8 py-4.5 text-base font-extrabold rounded-2xl text-white bg-brand-primary hover:bg-brand-primaryDark shadow-xl shadow-brand-primary/20 hover:shadow-brand-primary/30 transition-all duration-300 transform hover:-translate-y-0.5"
+                            >
+                                <i data-lucide="check-circle" class="mr-2 w-5 h-5"></i>
+                                Reserve My Free Trial Week
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Success Message Container (Initially Hidden) -->
+                    <div id="success-container" class="hidden text-center py-12 space-y-8 transition-opacity duration-500 ease-in-out opacity-0">
+                        <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-emerald-100 text-emerald-600">
+                            <i data-lucide="sparkles" class="w-10 h-10 animate-bounce"></i>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-3xl font-black text-brand-dark">Welcome to the Family, <span id="success-name" class="text-brand-primary">Friend</span>!</h3>
+                            <p class="text-lg font-extrabold text-brand-secondary">Your 7-Day Trial Pass is secure.</p>
+                            <p id="custom-timing-success-notice" class="text-sm text-indigo-600 font-extrabold hidden"></p>
+                            <p class="text-sm text-brand-slate max-w-md mx-auto leading-relaxed font-semibold">
+                                We've received your form and noted your focus on <span id="success-focus" class="font-black text-brand-primary">your routine</span>. Emma, Marcus, or Sarah will call or text you shortly to schedule your comforting, low-pressure tour.
+                            </p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 max-w-md mx-auto text-xs text-brand-slate space-y-2">
+                            <span class="block font-black text-brand-dark uppercase tracking-wider">What to wear & expect:</span>
+                            <p class="font-medium">Come in whatever clothing you feel comfy moving around in. There's no pressure to wear high-end sports gears, and we supply premium towels, water, and smiles for free!</p>
+                        </div>
+                        <div>
+                            <button 
+                                onclick="resetFormState()" 
+                                class="inline-flex items-center text-sm font-extrabold text-brand-secondary hover:text-brand-secondaryDark hover:underline"
+                            >
+                                <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Submit Another Free Trial Pass
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-brand-dark text-slate-300 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <!-- Branding column -->
+                <div class="space-y-4 md:col-span-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 bg-gradient-to-br from-brand-primary to-brand-secondary text-white rounded-xl shadow-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <span class="text-xl font-black text-white tracking-tight">Haven Fitness</span>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-sm leading-relaxed font-semibold">
+                        A premium environment built for standard folks, wellness explorers, and families looking to grow strong without fear.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="p-2.5 bg-slate-800 hover:bg-brand-primary hover:text-white rounded-xl transition-all duration-200">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-2.5 bg-slate-800 hover:bg-brand-secondary hover:text-white rounded-xl transition-all duration-200">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-2.5 bg-slate-800 hover:bg-brand-primary hover:text-white rounded-xl transition-all duration-200">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fast Links -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-black text-white uppercase tracking-wider">Fast Navigation</h4>
+                    <ul class="space-y-2.5 text-sm font-bold">
+                        <li><a href="#about" class="hover:text-brand-primary transition-colors text-slate-400">Our Philosophy</a></li>
+                        <li><a href="#schedule" class="hover:text-brand-primary transition-colors text-slate-400">Class Timings</a></li>
+                        <li><a href="#trainers" class="hover:text-brand-primary transition-colors text-slate-400">Meet Our Guides</a></li>
+                        <li><a href="#reviews" class="hover:text-brand-primary transition-colors text-slate-400">Member Stories</a></li>
+                        <li><a href="#join" class="hover:text-brand-primary transition-colors text-slate-400">Sign Up</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-black text-white uppercase tracking-wider">Say Hello</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400 font-bold">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-secondary flex-shrink-0 mt-0.5"></i>
+                            <span>482 Sanctuary Lane, Warm Springs Community, CA 90210</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-primary flex-shrink-0"></i>
+                            <span>(555) 798-2035</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-primary flex-shrink-0"></i>
+                            <span>hello@havenfitnessgym.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 space-y-4 font-bold">
+                <p>"We can't wait to see you walk through our doors."</p>
+                <p>&copy; 2026 Haven Fitness. Dedicated to health, mindfulness, and comfort.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript Logic -->
+    <script>
+        // Track customized timing slot global state
+        let lockedCustomTiming = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide SVG Icons first
+            lucide.createIcons();
+
+            // Mobile menu DOM elements (Using wrappers to bypass Lucide's detached DOM element bug)
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconWrapper = document.getElementById('menu-icon-wrapper');
+            const closeIconWrapper = document.getElementById('close-icon-wrapper');
+
+            // Toggle Mobile Menu
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIconWrapper.classList.add('hidden');
+                    closeIconWrapper.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIconWrapper.classList.remove('hidden');
+                    closeIconWrapper.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close Mobile Menu on clicking links
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIconWrapper.classList.remove('hidden');
+                    closeIconWrapper.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Schedule Tab Switcher Logic
+            const tabHoursBtn = document.getElementById('tab-hours-btn');
+            const tabClassesBtn = document.getElementById('tab-classes-btn');
+            const tabCustomBtn = document.getElementById('tab-custom-btn');
+            const panelHours = document.getElementById('panel-hours');
+            const panelClasses = document.getElementById('panel-classes');
+            const panelCustom = document.getElementById('panel-custom');
+
+            function clearActiveTabs() {
+                const inactiveStyle = "flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 text-brand-slate hover:bg-slate-200/50";
+                tabHoursBtn.className = inactiveStyle;
+                tabClassesBtn.className = inactiveStyle;
+                tabCustomBtn.className = inactiveStyle;
+
+                panelHours.classList.add('hidden');
+                panelClasses.classList.add('hidden');
+                panelCustom.classList.add('hidden');
+            }
+
+            tabHoursBtn.addEventListener('click', () => {
+                clearActiveTabs();
+                tabHoursBtn.className = "flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 bg-brand-primary text-white shadow-lg shadow-brand-primary/25";
+                panelHours.classList.remove('hidden');
+            });
+
+            tabClassesBtn.addEventListener('click', () => {
+                clearActiveTabs();
+                tabClassesBtn.className = "flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 bg-brand-primary text-white shadow-lg shadow-brand-primary/25";
+                panelClasses.classList.remove('hidden');
+            });
+
+            tabCustomBtn.addEventListener('click', () => {
+                clearActiveTabs();
+                tabCustomBtn.className = "flex-1 py-3 px-4 text-center rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center justify-center space-x-2 bg-brand-primary text-white shadow-lg shadow-brand-primary/25";
+                panelCustom.classList.remove('hidden');
+            });
+
+            // Custom Schedule Matcher Logic
+            const checkCustomBtn = document.getElementById('check-custom-btn');
+            const customResult = document.getElementById('custom-result');
+            const customResultText = document.getElementById('custom-result-text');
+            const lockCustomBtn = document.getElementById('lock-custom-btn');
+
+            checkCustomBtn.addEventListener('click', () => {
+                const selectedDay = document.getElementById('custom-day').value;
+                const selectedTime = document.getElementById('custom-time').value;
+                const selectedGoal = document.getElementById('custom-goal').value;
+
+                // Pick randomized guide to create warm interaction
+                const guides = [
+                    { name: "Emma Vance", specialty: "Mind-Body Restoration" },
+                    { name: "Marcus Sterling", specialty: "Safe Foundational Lifting" },
+                    { name: "Sarah Chen", specialty: "Heart-Restorative Cardio" }
+                ];
+                const matchedGuide = guides[Math.floor(Math.random() * guides.length)];
+
+                // Get user friendly readable text for target goal choice
+                const goalMap = {
+                    "Finding a comfortable routine": "finding an easy, sustainable routine",
+                    "Building functional confidence": "building movement confidence",
+                    "Meeting comforting friends": "meeting supportive community friends",
+                    "Moving comfortably without pain": "stretching and moving without discomfort"
+                };
+                const userGoalReadable = goalMap[selectedGoal] || selectedGoal;
+
+                customResultText.innerHTML = `Great news! Coach <strong class="text-indigo-900">${matchedGuide.name}</strong> is available on <strong class="text-indigo-900">${selectedDay}s at ${selectedTime}</strong> for a customized, low-intensity session oriented around <span class="underline font-bold">${userGoalReadable}</span>.`;
+                
+                customResult.classList.remove('hidden');
+                
+                // Set temporary global locked state
+                lockedCustomTiming = {
+                    day: selectedDay,
+                    time: selectedTime,
+                    goal: selectedGoal,
+                    coach: matchedGuide.name
+                };
+            });
+
+            // Action: Lock Custom Timing Slot and fill register inputs
+            lockCustomBtn.addEventListener('click', () => {
+                if (!lockedCustomTiming) return;
+
+                // Populate form selection goal field (Values now map 1-to-1 cleanly)
+                const focusSelect = document.getElementById('focus');
+                focusSelect.value = lockedCustomTiming.goal;
+
+                // Display dynamic lock badge above signup form
+                const lockBadge = document.getElementById('locked-timing-badge');
+                const lockString = document.getElementById('locked-timing-string');
+                lockString.textContent = `${lockedCustomTiming.coach} on ${lockedCustomTiming.day}s at ${lockedCustomTiming.time}`;
+                lockBadge.classList.remove('hidden');
+
+                // Smooth scroll to register section
+                document.getElementById('join').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+
+            // Clear Custom Timing selection
+            document.getElementById('clear-custom-timing').addEventListener('click', () => {
+                lockedCustomTiming = null;
+                document.getElementById('locked-timing-badge').classList.add('hidden');
+                document.getElementById('focus').value = "";
+                
+                // Scroll back to schedule section to choose another time
+                document.getElementById('schedule').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+
+            // Smooth scrolling intercept for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttr = this.getAttribute('href');
+                    if (hrefAttr === '#') return;
+                    
+                    e.preventDefault();
+                    const targetElement = document.querySelector(hrefAttr);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Form Submit Interceptor with custom slot integration
+            const registrationForm = document.getElementById('registration-form');
+            const formContainer = document.getElementById('form-container');
+            const successContainer = document.getElementById('success-container');
+            const successName = document.getElementById('success-name');
+            const successFocus = document.getElementById('success-focus');
+            const timingSuccessNotice = document.getElementById('custom-timing-success-notice');
+
+            registrationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Retrieve form values
+                const nameVal = document.getElementById('name').value.trim();
+                const focusVal = document.getElementById('focus').value;
+
+                formContainer.classList.add('opacity-0');
+                
+                setTimeout(() => {
+                    formContainer.classList.add('hidden');
+                    
+                    // Inject values into success pane
+                    successName.textContent = nameVal ? nameVal : 'Friend';
+                    successFocus.textContent = focusVal ? focusVal.toLowerCase() : 'your healthy journey';
+                    
+                    // Display customization confirmation if applicable
+                    if (lockedCustomTiming) {
+                        timingSuccessNotice.textContent = `Your custom timing slot (${lockedCustomTiming.day}s at ${lockedCustomTiming.time} with Coach ${lockedCustomTiming.coach}) is reserved!`;
+                        timingSuccessNotice.classList.remove('hidden');
+                    } else {
+                        timingSuccessNotice.classList.add('hidden');
+                    }
+
+                    successContainer.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        successContainer.classList.remove('opacity-0');
+                        successContainer.classList.add('opacity-100');
+                        
+                        document.getElementById('join').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 50);
+
+                }, 400);
+            });
+        });
+
+        // Function to reset form state
+        function resetFormState() {
+            const registrationForm = document.getElementById('registration-form');
+            const formContainer = document.getElementById('form-container');
+            const successContainer = document.getElementById('success-container');
+            const lockBadge = document.getElementById('locked-timing-badge');
+
+            successContainer.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                successContainer.classList.add('hidden');
+                registrationForm.reset();
+                lockedCustomTiming = null;
+                lockBadge.classList.add('hidden');
+                
+                formContainer.classList.remove('hidden');
+                setTimeout(() => {
+                    formContainer.classList.remove('opacity-0');
+                    formContainer.classList.add('opacity-100');
+                }, 50);
+            }, 400);
+        }
+    </script>
+</body>
+</html>
